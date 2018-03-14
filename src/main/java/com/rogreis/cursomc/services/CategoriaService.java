@@ -15,6 +15,6 @@ public class CategoriaService {
 	
 	public Categoria buscar(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
-		return obj.isPresent() ? obj.get() : null;
+		return obj.orElse(null); // pode ser: obj.isPresent() ? obj.get() : null;
 	}
 }
