@@ -11,15 +11,17 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.rogreis.cursomc.domain.Categoria;
+import com.rogreis.cursomc.dto.CategoriaDTO;
 import com.rogreis.cursomc.repositories.CategoriaRepository;
 import com.rogreis.cursomc.services.exceptions.DataIntegrityException;
 import com.rogreis.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
+
 	@Autowired
 	private CategoriaRepository repo;
-	
+
 	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -40,10 +42,10 @@ public class CategoriaService {
 		find(id);
 		try {
 			repo.deleteById(id);
-		} catch(DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos.");
 		}
-		
+		catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
+		}
 	}
 	
 	public List<Categoria> findAll() {
@@ -53,5 +55,9 @@ public class CategoriaService {
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 }
