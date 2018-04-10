@@ -11,12 +11,12 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rogreis.cursomc.dto.ClienteNewDTO;
 import com.rogreis.cursomc.domain.Cidade;
 import com.rogreis.cursomc.domain.Cliente;
 import com.rogreis.cursomc.domain.Endereco;
 import com.rogreis.cursomc.domain.enums.TipoCliente;
 import com.rogreis.cursomc.dto.ClienteDTO;
+import com.rogreis.cursomc.dto.ClienteNewDTO;
 import com.rogreis.cursomc.repositories.ClienteRepository;
 import com.rogreis.cursomc.repositories.EnderecoRepository;
 import com.rogreis.cursomc.services.exceptions.DataIntegrityException;
@@ -57,7 +57,7 @@ public class ClienteService {
 			repo.deleteById(id);
 		}
 		catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possível excluir porque há entidades relacionadas");
+			throw new DataIntegrityException("Não é possível excluir porque há pedidos relacionados");
 		}
 	}
 	
