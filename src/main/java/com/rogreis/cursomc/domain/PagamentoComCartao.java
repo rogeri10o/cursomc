@@ -2,25 +2,22 @@ package com.rogreis.cursomc.domain;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.rogreis.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
+@JsonTypeName("pagamentoComCartao")
 public class PagamentoComCartao extends Pagamento {
-	private static final long serialVersionUID = 6369972856820228226L;
+	private static final long serialVersionUID = 1L;
+
 	private Integer numeroDeParcelas;
 	
 	public PagamentoComCartao() {
-
-	}
-
-	public PagamentoComCartao(Integer numeroDeParcelas) {
-		super();
-		this.setNumeroDeParcelas(numeroDeParcelas);
 	}
 
 	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
 		super(id, estado, pedido);
-		this.setNumeroDeParcelas(numeroDeParcelas);
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
 	public Integer getNumeroDeParcelas() {
@@ -32,5 +29,5 @@ public class PagamentoComCartao extends Pagamento {
 	}
 	
 	
-	
+		
 }
