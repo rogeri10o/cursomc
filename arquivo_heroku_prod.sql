@@ -35,7 +35,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'Informática'),(2,'Escritório'),(3,'Cama mesa e banho'),(4,'Eletrônicos'),(5,'Jardinagem'),(6,'Decoração'),(7,'Perfumaria');
+INSERT INTO `categoria` VALUES (1,'Inform├ítica'),(2,'Escrit├│rio'),(3,'Cama mesa e banho'),(4,'Eletr├┤nicos'),(5,'Jardinagem'),(6,'Decora├º├úo'),(7,'Perfumaria');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `cidade` (
 
 LOCK TABLES `cidade` WRITE;
 /*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
-INSERT INTO `cidade` VALUES (1,'Uberlândia',1),(2,'São Paulo',2),(3,'Campinas',2);
+INSERT INTO `cidade` VALUES (1,'Uberl├óndia',1),(2,'S├úo Paulo',2),(3,'Campinas',2);
 /*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,10 +77,11 @@ CREATE TABLE `cliente` (
   `cpf_ou_cnpj` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL,
   `tipo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_cmxo70m08n43599l3h0h07cc6` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +90,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'36378912377','maria@gmail.com','Maria Silva',1);
+INSERT INTO `cliente` VALUES (1,'36378912377','rogeri10o@yahoo.com.br','Maria Silva','$2a$10$Zy7kUoktZvu7lkT6TagI4udxforjNFheDe1D1yymcCZHDKpojEBQK',1),(2,'31628382740','rogeri10o@gmail.com','Ana Costa','$2a$10$rUCQ5CT/XTfeMmVSE3rfT.AzZZZlQ6C8/DM0Ik3ERqH3OBip7ZTi6',1);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +113,7 @@ CREATE TABLE `endereco` (
   PRIMARY KEY (`id`),
   KEY `FK8b1kcb3wucapb8dejshyn5fsx` (`cidade_id`),
   KEY `FK8s7ivtl4foyhrfam9xqom73n9` (`cliente_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +122,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (1,'Jardim','38220834','Apto 303','Rua Flores','300',1,1),(2,'Centro','38777012','Sala 800','Avenida Matos','105',2,1);
+INSERT INTO `endereco` VALUES (1,'Jardim','38220834','Apto 303','Rua Flores','300',1,1),(2,'Centro','38777012','Sala 800','Avenida Matos','105',2,1),(3,'Centro','281777012',NULL,'Avenida Floriano','2106',2,2);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +146,7 @@ CREATE TABLE `estado` (
 
 LOCK TABLES `estado` WRITE;
 /*!40000 ALTER TABLE `estado` DISABLE KEYS */;
-INSERT INTO `estado` VALUES (1,'Minas Gerais'),(2,'São Paulo');
+INSERT INTO `estado` VALUES (1,'Minas Gerais'),(2,'S├úo Paulo');
 /*!40000 ALTER TABLE `estado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,6 +280,30 @@ INSERT INTO `pedido` VALUES (1,'2017-09-30 10:32:00',1,1),(2,'2017-10-10 19:35:0
 UNLOCK TABLES;
 
 --
+-- Table structure for table `perfis`
+--
+
+DROP TABLE IF EXISTS `perfis`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `perfis` (
+  `cliente_id` int(11) NOT NULL,
+  `perfis` int(11) DEFAULT NULL,
+  KEY `FKsobr8hl9guwr8775lyl1mncg2` (`cliente_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `perfis`
+--
+
+LOCK TABLES `perfis` WRITE;
+/*!40000 ALTER TABLE `perfis` DISABLE KEYS */;
+INSERT INTO `perfis` VALUES (1,2),(2,1),(2,2);
+/*!40000 ALTER TABLE `perfis` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `produto`
 --
 
@@ -299,7 +324,7 @@ CREATE TABLE `produto` (
 
 LOCK TABLES `produto` WRITE;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (1,'Computador',2000),(2,'Impressora',800),(3,'Mouse',80),(4,'Mesa de escritório',300),(5,'Toalha',50),(6,'Colcha',200),(7,'TV true color',1200),(8,'Roçadeira',800),(9,'Abajour',100),(10,'Pendente',180),(11,'Shampoo',90);
+INSERT INTO `produto` VALUES (1,'Computador',2000),(2,'Impressora',800),(3,'Mouse',80),(4,'Mesa de escrit├│rio',300),(5,'Toalha',50),(6,'Colcha',200),(7,'TV true color',1200),(8,'Ro├ºadeira',800),(9,'Abajour',100),(10,'Pendente',180),(11,'Shampoo',90);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,7 +373,7 @@ CREATE TABLE `telefone` (
 
 LOCK TABLES `telefone` WRITE;
 /*!40000 ALTER TABLE `telefone` DISABLE KEYS */;
-INSERT INTO `telefone` VALUES (1,'27363323'),(1,'93838393');
+INSERT INTO `telefone` VALUES (1,'27363323'),(1,'93838393'),(2,'93883321'),(2,'34252625');
 /*!40000 ALTER TABLE `telefone` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -361,4 +386,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-16 23:37:47
+-- Dump completed on 2018-05-20  9:35:22

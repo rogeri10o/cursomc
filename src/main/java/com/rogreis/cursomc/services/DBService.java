@@ -122,7 +122,7 @@ public class DBService {
 		p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p34, p35, p36, p37, p38,
 		p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50));
 		
-		p12.getCategorias().add(cat1);
+/*		p12.getCategorias().add(cat1);
 		p13.getCategorias().add(cat1);
 		p14.getCategorias().add(cat1);
 		p15.getCategorias().add(cat1);
@@ -161,7 +161,7 @@ public class DBService {
 		p48.getCategorias().add(cat1);
 		p49.getCategorias().add(cat1);
 		p50.getCategorias().add(cat1);	
-		
+*/		
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2, p4));
 		cat3.getProdutos().addAll(Arrays.asList(p5, p6));
@@ -185,10 +185,10 @@ public class DBService {
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11));
 		
-		produtoRepository.saveAll(Arrays.asList(p12, p13, p14, p15, p16, p17, p18, p19, p20,
+/*		produtoRepository.saveAll(Arrays.asList(p12, p13, p14, p15, p16, p17, p18, p19, p20,
 				p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38,
 				p39, p40, p41, p42, p43, p44, p45, p46, p47, p48, p49, p50));
-
+*/
 
 		Estado est1 = new Estado(null, "Minas Gerais");
 		Estado est2 = new Estado(null, "São Paulo");
